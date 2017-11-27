@@ -80,7 +80,7 @@ export default class shinkanzen extends React.Component {
 			{ p.map((datap)=>
 			<View style={styles.s1} key={datap.id}>
             <View style={styles.db}>
-            <Image style={styles.img1} source={require('./image/sh1.png')}/>
+            <Image style={styles.img1} source={{uri:datap.Image}}/>
             </View>
 
             <View style={styles.db}>
