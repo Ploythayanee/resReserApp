@@ -1,0 +1,67 @@
+{
+	"Search":[
+	{
+	"id":1,
+	"Name": "Shinkanzen",
+	"Type": "Japanese Restaurant",
+	"Review": "5.0",
+	"Image": "https://raw.githubusercontent.com/Ploythayanee/resReserApp/master/image/shin2.jpg",
+	"Place": [{
+		"id":1,
+		"location": "Thammasart",
+		"Time": 11.00-22.00,
+		"Phone": 095-545-1296
+	},
+	{
+		"id":2,
+		"location":"Bangkok University",
+		"Time": 12.00-23.00,
+		"Phone": 095-545-1296
+	},{
+		"id":3,
+		"location": "Kasertsart University",
+		"Time": 12.00-22.00,
+		"Phone": 095-545-1296
+	}
+	]
+	},
+	{
+	"id":2,
+	"Name": "Namba Shabu",
+	"Type": "Japanese Restaurant",
+	"Review": "4.0",
+	"Image": "https://raw.githubusercontent.com/Ploythayanee/resReserApp/master/image/numba2.jpg"
+	
+	},
+	{
+	"id":3,
+	"Name":"ShabuKu",
+	"Type":"Japanese Restaurant",
+	"Review": "4.1",
+		"Image": "https://raw.githubusercontent.com/Ploythayanee/resReserApp/master/image/shabuku.png"
+	}
+	,
+	{
+	"id":4,
+	"Name":"Hotto Bun",
+	"Type":"Hamburger",
+	"Review": "4.0",
+		"Image": "https://raw.githubusercontent.com/Ploythayanee/resReserApp/master/image/hotto.jpg"
+	},
+	{
+	"id":5,
+	"Name":"Gasto Steak",
+	"Type":"Japanese Restaurant",
+	"Review": "4.5",
+		"Image": "https://raw.githubusercontent.com/Ploythayanee/resReserApp/master/image/gasto.jpg"
+	},
+	{
+	"id":6,
+	"Name":"Yang Neoy",
+	"Type":"Japanese Restaurant",
+	"Review": "4.1",
+		"Image": "https://raw.githubusercontent.com/Ploythayanee/resReserApp/master/image/neoy.jpg"
+	}
+	]
+
+}
