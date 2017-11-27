@@ -48,11 +48,11 @@ export default class List extends React.Component {
 			cloneApp: this.state.cloneApp.cloneWithRows(newData),
 			search: search
 		})
-			console.log(this.state.check);
+			
 	}
 	
 	next(id,name){
-		console.log(id);
+		
 		var {navigate} = this.props.navigation;
 		navigate("detail",{title:name,i:id})
 	}
@@ -66,10 +66,9 @@ export default class List extends React.Component {
 		  );
 	  }
 	console.log("Already Getting Data");
-	console.log(this.state.cloneApp);
-	console.log(this.state.check);
+
 	var {params} = this.props.navigation.state;
-	console.log(params.name);
+	
     return(
 	 <View style={styles.container}>
 	  <ScrollView contentContainerStyle={styles.body}>

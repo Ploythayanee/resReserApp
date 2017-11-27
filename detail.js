@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   AppRegistry,StyleSheet, Text, View,Image,TextInput,Button,TouchableOpacity ,StatusBar
-,Content,ScrollView,Picker,DatePickerIOS,} from 'react-native';
+,Content,ScrollView,Picker,DatePickerIOS,ListView} from 'react-native';
 //import res from './res.json';
 import { StackNavigator } from 'react-navigation';
 
@@ -18,11 +18,22 @@ export default class shinkanzen extends React.Component {
         this.state = {
             name: '',
             i:0,
+			im:'https://raw.githubusercontent.com/Ploythayanee/resReserApp/master/SKZ/shin.jpg',
+			place:[],
+			clonePlace:[]
+			
         };
         API().then((data) => {
-            this.setState({name: data.Search[this.state.i].Name});
+	
+            this.setState({name: data.Search[this.state.i].Name,
+			im: data.Search[this.state.i].Image2,
+			place: data.Search[this.state.i].Place,
+			
+			});
+			
         })
             .catch((error)=>{});
+		
     }
 
 
@@ -34,9 +45,8 @@ export default class shinkanzen extends React.Component {
   componentDidMount(){
 	var {params} = this.props.navigation.state;
 	var d = params.i-1;
-	console.log(d);
 	this.setState({i:d});
-	console.log(this.state.i);
+	
 	}
 
   setCurrentReadOffset = (event) => {
@@ -46,10 +56,11 @@ export default class shinkanzen extends React.Component {
 	
 	
   render(){
-      const {params} = this.props.navigation.state;
+    const {params} = this.props.navigation.state;
     const {navigate} = this.props.navigation;
+	var p = this.state.place;
     return(
-	
+		
       <View style={styles.container}>
       <StatusBar
 
@@ -60,51 +71,27 @@ export default class shinkanzen extends React.Component {
         <ScrollView contentContainerStyle={styles.body}>
       
 
-        <Image style={styles.img} source={require('./SKZ/shin.jpg')}/>
+        <Image style={styles.img} source={{uri:this.state.im}}/>
 
         <View style={styles.subbody}>
           <Text style={styles.name}>{this.state.name}</Text>
         </View>
         <View style={styles.subbody}>
-
-          <View style={styles.s1}>
+			{ p.map((datap)=>
+			<View style={styles.s1} key={datap.id}>
             <View style={styles.db}>
             <Image style={styles.img1} source={require('./image/sh1.png')}/>
             </View>
 
             <View style={styles.db}>
-            <Text style={styles.hdetail}> Thammasat University</Text>
-            <Text style={styles.detail}>OPEN 11.00 – 22.30</Text>
-            <Text style={styles.hdetail}>โทร 095-545-1296 </Text>
+            <Text style={styles.hdetail}>{datap.location}</Text>
+            <Text style={styles.detail}>OPEN {datap.Time}</Text>
+            <Text style={styles.hdetail}>โทร {datap.Phone} </Text>
             </View>
           </View>
 
-          <View style={styles.s2}>
-            <View style={styles.db}>
-            <Image style={styles.img1} source={require('./image/sh4.png')}/>
-            </View>
-            <View style={styles.db}>
-            <Text style={styles.hdetail}>Bangkok University</Text>
-            <Text style={styles.detail}>OPEN 12.00 – 23.00</Text>
-            <Text style={styles.hdetail}>โทร 096-817-8855 </Text>
-            </View>
-          </View>
-
-          <View style={styles.s3}>
-          <View style={styles.db}>
-            <Image style={styles.img1} source={require('./image/sh5.png')}/>
-           </View>
-           <View style={styles.db}>
-           <Text style={styles.hdetail}>Kasetsarty University</Text>
-            <Text style={styles.detail}>OPEN 12.00 – 14.00</Text>
-            <Text style={styles.detail}>& 16.00 – 22.00</Text>
-            <Text style={styles.hdetail}>โทร 097-131-4634 </Text>
-           </View>
-           
-          </View>
-
-         
-
+			
+			)}
         </View>
 
         <TouchableOpacity style={styles.bb}
