@@ -10,19 +10,19 @@
 	"Place": [{
 		"id":1,
 		"location": "Thammasart",
-		"Time": 11.00-22.00,
-		"Phone": 095-545-1296
+		"Time": "11.00-22.00",
+		"Phone": "095-545-1296"
 	},
 	{
 		"id":2,
 		"location":"Bangkok University",
-		"Time": 12.00-23.00,
-		"Phone": 095-545-1296
+		"Time": "12.00-23.00",
+		"Phone": "095-545-1296"
 	},{
 		"id":3,
 		"location": "Kasertsart University",
-		"Time": 12.00-22.00,
-		"Phone": 095-545-1296
+		"Time": "12.00-22.00",
+		"Phone": "095-545-1296"
 	}
 	]
 	
