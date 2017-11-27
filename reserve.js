@@ -106,6 +106,7 @@ export default class List extends React.Component {
    const {navigate} = this.props.navigation;
    
 	var im = params.img;
+	var n = params.title;
     let i =0;
     return(
 	
@@ -129,7 +130,7 @@ export default class List extends React.Component {
   </PopupDialog>
         <Image style={styles.img}  source={{uri:im}}/>
         <View style={styles.subbody}>
-          <Text style={styles.name}>Shinkanzen</Text>
+          <Text style={styles.name}>{n}</Text>
         </View>
         <View style={styles.subpeo}>
             <View style={styles.tt}>

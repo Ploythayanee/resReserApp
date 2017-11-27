@@ -97,7 +97,7 @@ export default class shinkanzen extends React.Component {
         </View>
 
         <TouchableOpacity style={styles.bb}
-        onPress={ () => navigate('reserve',{title:'shinkanZen',img:this.state.im2})}>
+        onPress={ () => navigate('reserve',{title:this.state.name,img:this.state.im2})}>
         <Text style={styles.tbooking}>Reserve</Text>
         </TouchableOpacity>
 		
