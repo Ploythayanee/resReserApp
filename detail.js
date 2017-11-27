@@ -20,7 +20,8 @@ export default class shinkanzen extends React.Component {
             i:0,
 			im:'https://raw.githubusercontent.com/Ploythayanee/resReserApp/master/SKZ/shin.jpg',
 			place:[],
-			clonePlace:[]
+			clonePlace:[],
+			im2:''
 			
         };
         API().then((data) => {
@@ -28,11 +29,12 @@ export default class shinkanzen extends React.Component {
             this.setState({name: data.Search[this.state.i].Name,
 			im: data.Search[this.state.i].Image2,
 			place: data.Search[this.state.i].Place,
-			
+			im2: data.Search[this.state.i].Image3
 			});
 			
         })
             .catch((error)=>{});
+			
 		
     }
 
@@ -95,7 +97,7 @@ export default class shinkanzen extends React.Component {
         </View>
 
         <TouchableOpacity style={styles.bb}
-        onPress={ () => navigate('reserve',{title:'shinkanZen'})}>
+        onPress={ () => navigate('reserve',{title:'shinkanZen',img:this.state.im2})}>
         <Text style={styles.tbooking}>Reserve</Text>
         </TouchableOpacity>
 		
@@ -108,7 +110,7 @@ export default class shinkanzen extends React.Component {
 //export default List;
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+   flex: 1,
     paddingTop:0,
     borderWidth:1,
     paddingVertical:20,

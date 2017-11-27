@@ -31,6 +31,8 @@ export default class login extends React.Component {
 	}
 	static navigationOptions = {
 		title: 'login',
+		header: null
+
 	};
 	listeningForAuthChange(){
 		firebase.auth().onAuthStateChanged((user)=>{

@@ -23,6 +23,7 @@ export default class List extends React.Component {
 	}
 	static navigationOptions = {
 		title: 'List',
+		headerLeft: null
 	};
 	componentDidMount(){
 		fetch("https://raw.githubusercontent.com/Ploythayanee/resReserApp/master/res.json")
@@ -113,10 +114,8 @@ export default class List extends React.Component {
 //export default List;
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    //padding:10,
-    paddingTop:62,
-
+   flex: 1,
+    paddingTop:0,
     borderWidth:1,
     paddingVertical:20,
 

@@ -12,7 +12,7 @@ import detail from './detail.js';
 import reserve from './reserve.js';
 
 	const Navigation = StackNavigator({
-		First:{screen: login,headerMode: 'none'  },
+		First:{screen: login},
 		Second:{screen: List},
 		detail: {
 			screen: detail,
@@ -21,7 +21,5 @@ import reserve from './reserve.js';
 			}),
 		},
 		reserve: {screen: reserve}
-},{
-headerMode: 'none'
 }); 
 export default Navigation;

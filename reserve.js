@@ -2,7 +2,7 @@ import React from 'react';
 import {
  AppRegistry, StyleSheet, Text, View,Image,TextInput,Button,TouchableOpacity ,StatusBar
 ,Content,ScrollView,Picker,DatePickerIOS} from 'react-native';
-//import res from './res.json';
+
 import { StackNavigator } from 'react-navigation';
 import PopupDialog, {
   DialogTitle,
@@ -22,6 +22,7 @@ export default class List extends React.Component {
 
   static navigationOptions = {
         title : 'Reserve',
+		  headerLeft: null
     };
   setCurrentReadOffset = (event) => {
     console.log(event.nativeEvent.contentOffset.y);
@@ -103,7 +104,8 @@ export default class List extends React.Component {
 	 const { selectedHours, selectedMinutes } = this.state;
    const {params} = this.props.navigation.state;
    const {navigate} = this.props.navigation;
-    
+   
+	var im = params.img;
     let i =0;
     return(
 	
@@ -125,7 +127,7 @@ export default class List extends React.Component {
         </TouchableOpacity>
     </View>
   </PopupDialog>
-        <Image style={styles.img} source={require('./image/shin1.jpg')}/>
+        <Image style={styles.img}  source={{uri:im}}/>
         <View style={styles.subbody}>
           <Text style={styles.name}>Shinkanzen</Text>
         </View>
