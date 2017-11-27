@@ -6,6 +6,7 @@
 	"Type": "Japanese Restaurant",
 	"Review": "5.0",
 	"Image": "https://raw.githubusercontent.com/Ploythayanee/resReserApp/master/image/shin2.jpg",
+	"Image2": "https://raw.githubusercontent.com/Ploythayanee/resReserApp/master/SKZ/shin.jpg",
 	"Place": [{
 		"id":1,
 		"location": "Thammasart",
@@ -24,6 +25,7 @@
 		"Phone": 095-545-1296
 	}
 	]
+	
 	},
 	{
 	"id":2,
