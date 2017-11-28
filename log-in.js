@@ -88,7 +88,7 @@ export default class login extends React.Component {
 	   
         <Image style={styles.img} source={require('./image/img1.jpg')}>
         <View style={styles.head}>
-          <Text style={styles.title}>RESTURANT</Text>
+          <Text style={styles.title}>TableInTu</Text>
         </View>
         <View style={styles.login}>
 			
