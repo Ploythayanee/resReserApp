@@ -25,16 +25,16 @@ export default class login extends React.Component {
 			isShowLogin: true,
 		}
 		
-		this.listeningForAuthChange = this.listeningForAuthChange.bind(this);
+	//	this.listeningForAuthChange = this.listeningForAuthChange.bind(this);
 		this.login = this.login.bind(this);
-		this.register = this.register.bind(this);
+		
 	}
 	static navigationOptions = {
 		title: 'login',
 		header: null
 
 	};
-	listeningForAuthChange(){
+	/*listeningForAuthChange(){
 		firebase.auth().onAuthStateChanged((user)=>{
 			console.log('auth',user);
 			if(user){
@@ -43,7 +43,7 @@ export default class login extends React.Component {
 				this.setState({name: 'Anonymous',modalVisible: true});
 			}
 		});
-	}
+	}*/
 	login(){
 	
 		 var {navigate} = this.props.navigation;
@@ -55,34 +55,12 @@ export default class login extends React.Component {
 			
 			navigate("Second",{name: this.state.email})
 		}).catch((err)=> {
-			alert("An error occured: " + err.message);
+			alert("Username or Password is wrong ");
 			console.log('An error occures', err);
 		})
 	}
 	
-	signup(){
-		
-		return (
-		<View style={styles.sign}>
-		<Text>Hello</Text>
-		</View>
-		);
-		
-	}
-	register(){
-		console.log(this.state.email, this.state.password);
-		firebase.auth().createUserWithEmailAndPassword(this.state.email,this.state.password)
-		.then((user)=> {
-			this.setState({isShowLogin: true, modalVisible: false});
-			console.log("Create user successfully");
-		}).catch((err)=> {
-			alert("An error occured: " + err.description);
-			console.log('An error occurred',err);
-		})
-	}
   render(){
-	 //this.props.navigation
-	
     return(
       <View style={styles.container}>
 	   
@@ -108,11 +86,6 @@ export default class login extends React.Component {
 			 <Image style={styles.face} source={require('./image/facebook.png')}/>
         </View>
         </Image>
-
-
-
-
-	
       </View>
     );
   }

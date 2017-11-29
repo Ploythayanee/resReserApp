@@ -22,13 +22,9 @@ export default class List extends React.Component {
 
   static navigationOptions = {
         title : 'Reserve',
-		  headerLeft: null
+		  //headerLeft: null
     };
-  setCurrentReadOffset = (event) => {
-    console.log(event.nativeEvent.contentOffset.y);
-  }
- 
-  
+   
   constructor(props){
     super(props);
 	this.database = firebase.database();

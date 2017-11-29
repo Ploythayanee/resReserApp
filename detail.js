@@ -56,11 +56,6 @@ export default class shinkanzen extends React.Component {
 	//console.log(u);
 	}
 
-  setCurrentReadOffset = (event) => {
-    console.log(event.nativeEvent.contentOffset.y);
-  }
-  
-	
 	
   render(){
     const {params} = this.props.navigation.state;

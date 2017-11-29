@@ -5,9 +5,7 @@ import {
 //const list = require('./res.json');
 
 export default class List extends React.Component {
-	 setCurrentReadOffset = (event) => {
-    console.log(event.nativeEvent.contentOffset.y);
-  }
+	
 
   constructor(props){
 		super(props);
