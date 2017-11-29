@@ -21,7 +21,8 @@ export default class shinkanzen extends React.Component {
 			im:'https://raw.githubusercontent.com/Ploythayanee/resReserApp/master/SKZ/shin.jpg',
 			place:[],
 			clonePlace:[],
-			im2:''
+			im2:'',
+			us:''
 			
         };
         API().then((data) => {
@@ -47,8 +48,12 @@ export default class shinkanzen extends React.Component {
   componentDidMount(){
 	var {params} = this.props.navigation.state;
 	var d = params.i-1;
-	this.setState({i:d});
-	
+	var u = params.user;
+	this.setState({
+		i:d,
+		us:u
+	});
+	//console.log(u);
 	}
 
   setCurrentReadOffset = (event) => {
@@ -61,6 +66,7 @@ export default class shinkanzen extends React.Component {
     const {params} = this.props.navigation.state;
     const {navigate} = this.props.navigation;
 	var p = this.state.place;
+	var n = this.state.us;
     return(
 		
       <View style={styles.container}>
@@ -97,7 +103,7 @@ export default class shinkanzen extends React.Component {
         </View>
 
         <TouchableOpacity style={styles.bb}
-        onPress={ () => navigate('reserve',{title:this.state.name,img:this.state.im2})}>
+        onPress={ () => navigate('reserve',{title:this.state.name,img:this.state.im2,user:n})}>
         <Text style={styles.tbooking}>Reserve</Text>
         </TouchableOpacity>
 		

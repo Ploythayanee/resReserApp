@@ -15,7 +15,7 @@ var config = {
     messagingSenderId: "986582726044"
 };
 firebase.initializeApp(config);
-const routes = [{index:0,title:'Restaurant List'},{index:1,title:'Restaurant Booking'}];
+
 export default class login extends React.Component {
 	constructor(props){
 		super(props);

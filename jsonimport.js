@@ -15,7 +15,8 @@ export default class List extends React.Component {
 			isLoading: true,
 			cloneApp:[],
 			search:'',	
-			check:[]
+			check:[],
+			Username:''
 		}
 	   this.filterSearch = this.filterSearch.bind(this);
 	   this.next = this.next.bind(this);
@@ -37,6 +38,7 @@ export default class List extends React.Component {
 				 check: responseJson.Search
 			 });
 		})
+		
 	}
 	filterSearch(search){
 		var data = this.state.check;
@@ -52,10 +54,10 @@ export default class List extends React.Component {
 			
 	}
 	
-	next(id,name){
+	next(id,name,us){
 		
 		var {navigate} = this.props.navigation;
-		navigate("detail",{title:name,i:id})
+		navigate("detail",{title:name,i:id,user:us})
 	}
   render(){
 	 console.log("Getting Data");
@@ -69,7 +71,10 @@ export default class List extends React.Component {
 	console.log("Already Getting Data");
 
 	var {params} = this.props.navigation.state;
+	var User = params.name;
+	//this.setState({Username:User});
 	
+	console.log(User);
     return(
 	 <View style={styles.container}>
 	  <ScrollView contentContainerStyle={styles.body}>
@@ -88,7 +93,9 @@ export default class List extends React.Component {
 						
 						<View style={styles.row}>
 						<View style={{flex:3}}>
+							<TouchableOpacity onPress={this.next.bind(this, id2,name2,User)}>
 							<Image style={styles.img} source={{uri: rowData.Image}}/>
+							</TouchableOpacity>
 						</View> 
 						<View style={{flex:10,padding:5}}>
 						<Text style ={styles.title}>{rowData.Name}</Text>
@@ -96,7 +103,7 @@ export default class List extends React.Component {
 						<Image style={styles.star} source={require('./image/stars-5.png')}/>
 						<Text style ={styles.review}>{rowData.Review}</Text>
 						<TouchableOpacity>
-						<Text style={styles.tb} onPress={this.next.bind(this, id2,name2)}>Open</Text>
+						<Text style={styles.tb} onPress={this.next.bind(this, id2,name2,User)}>Open</Text>
 						</TouchableOpacity>
 						</View>
 						</View>

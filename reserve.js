@@ -15,7 +15,7 @@ import DateTimePicker from 'react-native-modal-datetime-picker';
 import DatePicker from 'react-native-datepicker'; 
 //import { Database } from 'react-native-database';
 
-
+import * as firebase from 'firebase';
 
 
 export default class List extends React.Component {
@@ -27,14 +27,15 @@ export default class List extends React.Component {
   setCurrentReadOffset = (event) => {
     console.log(event.nativeEvent.contentOffset.y);
   }
-  booking(){
-
-  }
+ 
   
   constructor(props){
     super(props);
+	this.database = firebase.database();
     this.state = {
 	  isDateTimePickerVisible: false,
+	  his:[],
+	  Resname:'',
       amount: 0,
       i:0,
 	  selectedHours: 0,
@@ -45,6 +46,9 @@ export default class List extends React.Component {
 		'17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30','21:00','21:30','22:00'],
       //  date: new Date(),
       //  timeZoneOffsetInHours: (-1)*(new Date()).getTimezoneOffset()/60
+	  title:'',
+	  image:'',
+	  username:'',
 
     }
     this.plus = this.plus.bind(this);
@@ -52,6 +56,7 @@ export default class List extends React.Component {
     this.plusTime = this.plusTime.bind(this);
     this.minusTime = this.minusTime.bind(this);
     this.confirm = this.confirm.bind(this);
+	this.Hisref = this.database.ref('his');
       //this.onDateChange = this.onDateChange.bind(this);
 	
   }
@@ -64,6 +69,7 @@ export default class List extends React.Component {
 		this._hideDateTimePicker();
 		this.setState({date : date});
 	};
+	
   plus(){
     this.setState({amount : this.state.amount+1});
   }
@@ -92,21 +98,47 @@ export default class List extends React.Component {
 	this.setState({i : this.state.i});
 	}
   }
-	confirm(){
+	confirm(u,na){	
+	    var am = this.state.amount;
+		var n = this.state.i;
+		var d = this.state.date;
+		var tm = this.state.time[n];
+		var rm = this.state.Resname;
+		this.Hisref.transaction((his)=>{
+				if(!his){
+					his = this.state.his;
+				}
+				his.push({Name:u,RestaurantName:na,Amount:am,Time:tm,D: d});
+				return his;
+			});
     this.setState({amount : 0});
     this.setState({i : 0});
     this.setState({date : "2017-06-01"});
     this.popupDialog.dismiss();
-    //this.props.navigation.navigate('Home', {title: 'ShinKanZen'})
+    //this.props.navigation.navigate('Home', {title: 'ShinKanZen'})   
+  }
     
+  listeningForReserve(){
+	  this.Hisref.on('value',(snapshot)=> 
+	  {
+		  console.log("Reserve Add", snapshot.val());
+		  this.setState({his: snapshot.val()}); 
+	  })
+	
+  }
+   componentDidmount(){
+	  this.listeningForReserve();
+      
   }
   render(){
-	 const { selectedHours, selectedMinutes } = this.state;
+	const { selectedHours, selectedMinutes } = this.state;
    const {params} = this.props.navigation.state;
    const {navigate} = this.props.navigation;
    
 	var im = params.img;
 	var n = params.title;
+	var un = params.user;
+	console.log(un);
     let i =0;
     return(
 	
@@ -117,13 +149,13 @@ export default class List extends React.Component {
     ref={(popupDialog) => { this.popupDialog = popupDialog; }}
   >
     <View>
-      <Text style={styles.detail}>Shinkanzen</Text>
+      <Text style={styles.detail}>{n}</Text>
       <Text style={styles.detail}>{this.state.amount} PEOPLE</Text>
       <Text style={styles.detail}>Time : {this.state.time[this.state.i]}</Text>
       <Text style={styles.detail}>Date : {this.state.date}</Text>
       <Text style={styles.detail}>Please come in time between {this.state.time[this.state.i]} - {this.state.time[this.state.i+1]}</Text>
        <TouchableOpacity style={styles.bb}
-        onPress={this.confirm }>
+        onPress={this.confirm.bind(this,un,n)}>
         <Text style={styles.tbooking}>Confirm</Text>
         </TouchableOpacity>
     </View>
